@@ -1,10 +1,18 @@
 import { Client, Collection } from "discord.js";
 import "dotenv/config";
-import { read, readdirSync } from "fs";
+import { read, readdirSync, utimes } from "fs";
 
 const client = new Client({
     intents:["GUILDS","GUILD_MEMBERS","GUILD_MESSAGES"]
 })
+
+/* ---------------------------------------- UTILS ----------------------------------------*/
+
+const messagelog = await import("./utils/messagelog.js").then(u => u.default)
+messagelog(client)
+
+/* ---------------------------------------- UTILS ----------------------------------------*/
+
 
 /* --------------------------------------- COMMAND HANDLER ------------------------------ */ 
 client.commands = new Collection();
