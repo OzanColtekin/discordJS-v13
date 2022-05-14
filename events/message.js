@@ -1,4 +1,4 @@
-export default client =>{
+export default (client,Tags,Roller,RolVarMiMember,isAdmin,permlvl,MessageActionRow,MessageButton) =>{
     const prefix = process.env.prefix
 
     client.on("messageCreate",message =>{
@@ -11,7 +11,7 @@ export default client =>{
         if(!command) return 0;
 
         try{
-            command.execute(message)
+            command.execute(message,MessageActionRow,MessageButton)
         }
         catch(e){
             console.log(e)

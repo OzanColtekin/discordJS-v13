@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/OzanColtekin/discordJS-v13#readme",
   "dependencies": {
+    "discord-buttons": "^4.0.0-deprecated",
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0",
     "sequelize": "^6.19.0",

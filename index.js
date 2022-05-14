@@ -1,4 +1,4 @@
-import { Client, Collection,MessageEmbed } from "discord.js";
+import { Client, Collection,MessageEmbed,MessageActionRow,MessageButton } from "discord.js";
 import "dotenv/config";
 import {  readdirSync } from "fs";
 import { Sequelize, DataTypes } from 'sequelize';
@@ -131,6 +131,6 @@ readdirSync("./commands").forEach(category=>{
 /* ---------------------------------------- EVENT HANDLER --------------------------------- */ 
 readdirSync("./events").forEach(async file =>{
     const event = await import(`./events/${file}`).then(m=> m.default)
-    await event(client,Tags,Roller,RolVarMiMember,isAdmin,permlvl)
+    await event(client,Tags,Roller,RolVarMiMember,isAdmin,permlvl,MessageActionRow,MessageButton)
 })
 /* ---------------------------------------- EVENT HANDLER --------------------------------- */ 

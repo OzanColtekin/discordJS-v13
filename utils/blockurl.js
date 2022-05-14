@@ -8,7 +8,6 @@ export default (client,Tags,isAdmin,MessageEmbed)=>{
         if(linkEngel == 0) return 0;
         const logid = await tag.get("logchannel")
 		const log = message.guild.channels.cache.find(c => c.id === logid)
-        console.log("buraya geldik")
         const probablyLinks = [".com",".tv",".net",".xyz",".gg",".io",".io","www.","https:","http:",".org",".biz",".party",".me"]
 		probablyLinks.some(async word => {
 			if(message.content.toLowerCase().includes(word)){
