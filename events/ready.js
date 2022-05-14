@@ -1,6 +1,6 @@
 import fs from "fs";
 
-export default (client, Tags) => {
+export default (client, Tags,Roller,RolVarMiMember,isAdmin,permlvl) => {
     client.once("ready", async () => {
         const guilds = await client.guilds.fetch()
 
@@ -95,6 +95,29 @@ export default (client, Tags) => {
             })
         })
         /* ------------------------------- ANTI MENTION CONTROL ----------------*/
+
+        /*-------------------------------- ROL CONTROL -------------------------*/
+        guilds.forEach(async guild => {
+            const sunucu = await guild.fetch()
+            const tag = await Tags.findOne({ where: { guild_id: guild.id } })
+            const members = await sunucu.members.fetch({ force: true })
+            const data = await tag.get("userRoles")
+            members.forEach(async member => {
+                if (data[member.id] == undefined) {
+                    if(isAdmin(member)[0]){
+                        console.log(isAdmin(member)[1])
+                        console.log("permleveli: "+ permlvl(isAdmin(member)[1]))
+                        console.log("admin")
+                    }
+                    else{
+                        console.log("admin değil")
+                    }
+                    await Tags.update({ antimention: data }, { where: { guild_id: guild.id } })
+                }
+            })
+        })
+
+        /*-------------------------------- ROL CONTROL -------------------------*/
 
         /* -------------------------------------- DATABASE CHECK --------------------------------- */
     })
