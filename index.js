@@ -111,7 +111,7 @@ await Tags.sync()
 
 readdirSync("./utils").forEach(async file =>{
     const util = await import(`./utils/${file}`).then(m=> m.default)
-    await util(client,Tags,isAdmin,MessageEmbed)
+    await util(client,Tags,isAdmin,permlvl,MessageEmbed)
 })
 
 /* ---------------------------------------- UTILS ----------------------------------------*/
