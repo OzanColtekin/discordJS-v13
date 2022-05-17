@@ -1,10 +1,10 @@
 export default {
     name:"log",
-    execute(message,MessageActionRow,MessageButton){
+    execute(message,args,isAdmin,permlvl,MessageActionRow,MessageButton,MesajGönder){
         const row = new MessageActionRow()
 			.addComponents(
 				new MessageButton()
-					.setCustomId('primary')
+					.setCustomId('createticket')
 					.setLabel('Primary')
 					.setStyle('PRIMARY'),
 			);

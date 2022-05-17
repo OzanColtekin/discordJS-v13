@@ -7,8 +7,12 @@ const client = new Client({
     intents:["GUILDS","GUILD_MEMBERS","GUILD_MESSAGES"]
 })
 
-client.login(process.env.token)
+client.on('interactionCreate', interaction => {
+	if (!interaction.isButton()) return;
+	console.log(interaction.message.id);
+});
 
+client.login(process.env.token)
 /* --------------------------------- USEFUL THINGS -------------------------- */
 
 const Roller = {"Founder":"716104504713674783",
@@ -26,6 +30,7 @@ const Roller = {"Founder":"716104504713674783",
 function RolVarMiMember(member,role) {
     return member.roles.cache.find(r=> r.id === role) ? true : false
 }
+
 
 function isAdmin(member){
     let admin = false
@@ -111,7 +116,7 @@ await Tags.sync()
 
 readdirSync("./utils").forEach(async file =>{
     const util = await import(`./utils/${file}`).then(m=> m.default)
-    await util(client,Tags,isAdmin,permlvl,MessageEmbed)
+    await util(client,Tags,isAdmin,permlvl,MessageActionRow,MessageEmbed,Roller,MessageButton)
 })
 
 /* ---------------------------------------- UTILS ----------------------------------------*/
@@ -131,6 +136,6 @@ readdirSync("./commands").forEach(category=>{
 /* ---------------------------------------- EVENT HANDLER --------------------------------- */ 
 readdirSync("./events").forEach(async file =>{
     const event = await import(`./events/${file}`).then(m=> m.default)
-    await event(client,Tags,Roller,RolVarMiMember,isAdmin,permlvl,MessageActionRow,MessageButton)
+    await event(client,Tags,Roller,RolVarMiMember,isAdmin,permlvl,MessageActionRow,MessageButton,MessageEmbed)
 })
 /* ---------------------------------------- EVENT HANDLER --------------------------------- */ 

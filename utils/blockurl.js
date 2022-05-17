@@ -1,4 +1,4 @@
-export default (client,Tags,isAdmin,MessageEmbed)=>{
+export default (client,Tags,isAdmin,permlvl,MessageActionRow,MessageEmbed,Roller)=>{
     client.on("messageCreate", async message => {
         if(message.author.bot) return 0;
         const member = message.member
