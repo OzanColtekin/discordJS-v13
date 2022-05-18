@@ -24,7 +24,7 @@ export default {
             .setColor("#33FFCA")
             .setTitle('Destek Paneli')
             .setDescription(`Destek talebi oluşturmak için aşağıdaki butona tıklayabilirsin.`)
-            .setFooter('Saints Roleplay', 'https://i.hizliresim.com/3atro9p.png');
+            .setFooter({text:'Saints Roleplay', iconURL:'https://i.hizliresim.com/3atro9p.png'});
             const button = new MessageActionRow()
 			.addComponents(
 				new MessageButton()

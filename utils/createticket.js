@@ -1,4 +1,3 @@
-import fs from "fs";
 export default (client,Tags,isAdmin,permlvl,MessageActionRow,MessageEmbed,Roller,MessageButton) =>{
     client.on("interactionCreate",async interaction=>{
         if(!interaction.isButton()) return 0;
@@ -22,7 +21,7 @@ export default (client,Tags,isAdmin,permlvl,MessageActionRow,MessageEmbed,Roller
                 allow:["VIEW_CHANNEL"],
             },
             {
-                id:"715742363477082212",
+                id:Roller["Everyone"],
                 deny:["VIEW_CHANNEL"],
             }])
             tickets[user_id].channel_id = channel.id
@@ -38,7 +37,7 @@ export default (client,Tags,isAdmin,permlvl,MessageActionRow,MessageEmbed,Roller
                         .setColor("#33FFCA")
                         .setDescription(`Destek ekibi en kısa sürede talebini yanıtlayacak.\nTalebi kapatmak için aşağıda bulunan butona tıklaman yeterli.`)
                         .setFooter({text:'Saints Roleplay', iconURL:'https://i.hizliresim.com/3atro9p.png'});
-            channel.send({components:[closebutton,],embeds:[embed]})
+            channel.send({components:[closebutton],embeds:[embed]})
             channel.send(`Merhaba ${member}! Talebi oluşturma sebebini kısaca özetler misin?`)
         })
     })

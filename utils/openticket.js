@@ -13,7 +13,7 @@ export default (client,Tags,isAdmin,permlvl,MessageActionRow,MessageEmbed,Roller
 
         tickets[user_id].kapatmaDurum = 0
         await Tags.update({usersTickets:tickets},{where:{guild_id: guild.id}})
-        await channel.overwritePermissions([{
+        await channel.permissionOverwrites.set([{
             id: user_id,
             allow:["VIEW_CHANNEL"],
         },
@@ -22,7 +22,7 @@ export default (client,Tags,isAdmin,permlvl,MessageActionRow,MessageEmbed,Roller
             allow:["VIEW_CHANNEL"],
         },
         {
-            id:"everyone",
+            id: Roller["Everyone"],
             deny:["VIEW_CHANNEL"],
         }])
     })

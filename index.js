@@ -7,10 +7,7 @@ const client = new Client({
     intents:["GUILDS","GUILD_MEMBERS","GUILD_MESSAGES"]
 })
 
-client.on('interactionCreate', interaction => {
-	if (!interaction.isButton()) return;
-	console.log(interaction.message.id);
-});
+
 
 client.login(process.env.token)
 /* --------------------------------- USEFUL THINGS -------------------------- */
@@ -25,6 +22,7 @@ const Roller = {"Founder":"716104504713674783",
 				"Helper 3":"929067556470407198",
                 "Helper 2":"929067556470407198",
                 "Helper 1":"929067556470407198",
+                "Everyone" :"715742363477082212",
 				}
 
 function RolVarMiMember(member,role) {
